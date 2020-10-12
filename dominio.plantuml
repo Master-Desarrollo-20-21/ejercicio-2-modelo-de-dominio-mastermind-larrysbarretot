@@ -1,0 +1,36 @@
+@startuml
+class Mastermind
+class DecodingBoard
+class Row
+class Shield
+class LargeHole
+class SmallHole
+class Codemaker
+class Codebreaker
+class CodePeg
+class KeyPeg
+class Player
+class Action
+class SelectionAction
+class PutAction
+class Feedback
+Mastermind *-- DecodingBoard
+Mastermind *-- CodePeg
+Mastermind *-- KeyPeg
+Mastermind o-- "2" Player
+DecodingBoard *-- "12" Row
+Row *-- "4" LargeHole
+Row *-- "4" SmallHole
+LargeHole "4" <..left Shield
+Player <|-- Codemaker
+Player <|-- Codebreaker
+Action <|-- SelectionAction
+Action <|-- PutAction
+Action <|-- Feedback
+SelectionAction ..> CodePeg
+Feedback ..> KeyPeg
+Codemaker ..> "4" SelectionAction
+Codemaker ..> Feedback
+Codebreaker ..> "4" SelectionAction
+Codebreaker ..> "4" PutAction
+@enduml
